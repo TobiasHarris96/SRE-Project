@@ -3,6 +3,10 @@ kind: Service
 metadata:
   name: sre-demo-service
   namespace: sre-project
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "5000"
 
   labels:
     app: sre-demo-app
