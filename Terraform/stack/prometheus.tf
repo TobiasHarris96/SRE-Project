@@ -16,7 +16,7 @@ resource "helm_release" "prometheus" {
               rules = [
                 {
                   alert = "SREDemoAppDown"
-                  expr  = "up{service=\"sre-demo-service\"} == 0"
+                  expr  = "absent(up{service=\"sre-demo-service\"}) or up{service=\"sre-demo-service\"} == 0"
                   for   = "1m"
 
                   labels = {
